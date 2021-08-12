@@ -7,15 +7,7 @@
       color: #424346;
       font-size: 12px;
       font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
-       margin-left: 20px
-    }
-
-    p1 {
-         color: #424346;
-      font-size: 12px;
-      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
-       margin-left: 20px;
-         padding-bottom: 25px;
+      margin-left: 20px
     }
 
     input[type=submit] {
@@ -28,6 +20,7 @@
       cursor: pointer;
       width: 100px;
       height: 45px;
+      margin-left: 20px;
     }
 
     .cancel {
@@ -43,6 +36,18 @@
       margin-left: 20px;
     }
 
+    .addanswer {
+      background-color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px;
+      box-sizing: border-box;
+      cursor: pointer;
+      color: #2a6ca0;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+      margin-left: 10px;
+    }
+
     .x {
       border: none;
       background: none;
@@ -54,14 +59,14 @@
     /* The box */
     input[type="text"] {
       border-radius: 8px;
-      padding: 8px ;
+      padding: 8px;
       box-sizing: border-box;
       border: 1px solid #d7dbde;
       color: #4e504f;
       font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
-       margin-left: 5px;
+      margin-left: 5px;
+      
     }
-    
 
     /* The container */
     .container {
@@ -78,7 +83,6 @@
       position: absolute;
       opacity: 0;
       cursor: pointer;
-      
     }
 
     /* Create a custom radio button */
@@ -136,34 +140,32 @@
       background: #565a5d;
       border-color: #ced4d9;
     }
-    
-
-
-    
-    
     }
   </style>
 </head>
 
 <body>
-  <p>Short Description  </p> <p> <input type="text" value="Types of Reactions" readonly size="100">
+  <p>Short Description </p>
+  <p> <input type="text" value="Types of Reactions" readonly size="100">
     <hr style="height:2px; visibility:hidden;" />
   </p>
 
-  <p>Question Text * </p> <p> <input type="text"  readonly size="100" value="A reaction between an acid and a base is called a " padding-bottom= 25px/>  
+  <p>Question Text * </p>
+  <p> <input type="text" readonly size="100" value="A reaction between an acid and a base is called a " padding-bottom="25px" />
     <hr style="height:2px; visibility:hidden;" />
   </p>
-  <p>Hint </p> <p> <input type="text" value="We did a lab experience about this." readonly size="100">
+  <p>Hint </p>
+  <p> <input type="text" value="We did a lab experience about this." readonly size="100">
     <hr style="height:2px; visibility:hidden;" />
   </p>
 
-  <p1>Answers * </p1> <br>
+  <p>Answers * </p> <br>
 
     <label class="container" form id="i">
-      <input type="radio" checked="checked" name="radio">
-    <span class="checkmark"></span>
-    <input type="text" value="Neutralization reaction" size="100" readonly>
-    <input type="button" class="x" value="x" onclick="remove(i)">
+      <input type="radio" checked="checked" name="radio" id="radio">
+    <span class="checkmark" id="checkmark"></span>
+    <input type="text" value="Neutralization reaction" size="100" readonly id="text">
+    <input type="button" id="x" class="x" value="x" onclick="remove(i)">
   </label>
 
   <label class="container" form id="j">
@@ -186,16 +188,39 @@
     <input type="text" value="Single replacement reaction" size="100" readonly>
     <input type="button" class="x" value="x" onclick="remove(l)">
   </label>
-
+  
+  <label id="container" onclick="remove(container)"> </label>
   <br>
-  <input type="submit" value="Save" onclick='return btnClick();'>
+  <input type="button" class="addanswer" value="Add Answer" onclick="addAnswer()">
+  
+  <br> <br> <br>
+  <input type="submit" value="Save" onclick="btnClick()">
   <input type="button" class="cancel" value="Cancel">
-
-  </div>
 
   <script>
     function remove(elem) {
       elem.parentNode.removeChild(elem);
+    }
+
+    function addAnswer() {
+       
+      var container = document.getElementById("container");
+      var radio =  document.getElementById("radio");
+      var x =  document.getElementById("x");
+      var input = document.createElement("input");
+	  input.type = "text";
+      input.size="100";
+      var br = document.createElement("br");
+       
+      container.appendChild(radio);
+       
+      container.appendChild(input);
+    
+      container.appendChild(x);
+      
+                 
+         
+           
     }
 
     function btnClick() {
