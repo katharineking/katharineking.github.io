@@ -1,10 +1,213 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My GitHub Pages Site</title>
-  </head>
-  <body>
-    <h1>Hello world!</h1>
-    <p>Welcome to my GitHub Pages site!</p>
-  </body>
+
+<head>
+  <style>
+    p {
+      color: #424346;
+      font-size: 12px;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+       margin-left: 20px
+    }
+
+    p1 {
+         color: #424346;
+      font-size: 12px;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+       margin-left: 20px;
+         padding-bottom: 25px;
+    }
+
+    input[type=submit] {
+      background-color: #006fc0;
+      color: white;
+      font-size: 14px;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+      border: 1px solid #0e589c;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100px;
+      height: 45px;
+    }
+
+    .cancel {
+      background-color: #e2e9f1;
+      color: #424346;
+      font-size: 14px;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 115px;
+      height: 45px;
+      margin-left: 20px;
+    }
+
+    .x {
+      border: none;
+      background: none;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+      padding: 6px 12px;
+      font-size: 18px;
+    }
+
+    /* The box */
+    input[type="text"] {
+      border-radius: 8px;
+      padding: 8px ;
+      box-sizing: border-box;
+      border: 1px solid #d7dbde;
+      color: #4e504f;
+      font-family: Lato, Lucida Sans Unicode, Lucida Grande, sans-serif;
+       margin-left: 20px;
+    }
+    
+
+    /* The container */
+    .container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* Hide the browser's default radio button */
+    .container input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      
+    }
+
+    /* Create a custom radio button */
+    .checkmark {
+      border: 1px solid black;
+      position: absolute;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #f2f3fd;
+      border-radius: 45%;
+      border-color: #ced4d9;
+       margin-left: 20px;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked~.checkmark {
+      background-color: #f2f3fd;
+      border-color: #ced4d9;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked~.checkmark:after {
+      display: block;
+      width: 11px;
+      height: 11px;
+      top: 7px;
+      left: 7px;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+      top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border-color: #ced4d9;
+    }
+
+    /* Style the indicator (dot) */
+    .container .checkmark:after {
+      top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #565a5d;
+      border-color: #ced4d9;
+    }
+    
+
+
+    
+    
+    }
+  </style>
+</head>
+
+<body>
+  <p>Short Description  </p> <p> <input type="text" value="Types of Reactions" readonly size="100">
+    <hr style="height:2px; visibility:hidden;" />
+  </p>
+
+  <p>Question Text * </p> <p> <input type="text"  readonly size="100" value="A reaction between an acid and a base is called a " padding-bottom= 25px/>  
+    <hr style="height:2px; visibility:hidden;" />
+  </p>
+  <p>Hint </p> <p> <input type="text" value="We did a lab experience about this." readonly size="100">
+    <hr style="height:2px; visibility:hidden;" />
+  </p>
+
+  <p1>Answers * </p1> <br>
+
+    <label class="container" form id="i">
+      <input type="radio" checked="checked" name="radio">
+    <span class="checkmark"></span>
+    <input type="text" value="Neutralization reaction" size="100" readonly>
+    <input type="button" class="x" value="x" onclick="remove(i)">
+  </label>
+
+  <label class="container" form id="j">
+      <input type="radio" name="radio">
+    <span class="checkmark"></span>
+    <input type="text" value="Salt reaction" size="100" readonly>
+    <input type="button" class="x" value="x" onclick="remove(j)">
+  </label>
+
+  <label class="container" form id="k">
+      <input type="radio" name="radio">
+    <span class="checkmark"></span>
+    <input type="text" value="Hydroxide reaction" size="100" readonly>
+    <input type="button" class="x" value="x" onclick="remove(k)">
+  </label>
+
+  <label class="container" form id="l">
+      <input type="radio" name="radio">
+    <span class="checkmark"></span>
+    <input type="text" value="Single replacement reaction" size="100" readonly>
+    <input type="button" class="x" value="x" onclick="remove(l)">
+  </label>
+
+  <br>
+  <input type="submit" value="Save" onclick='return btnClick();'>
+  <input type="button" class="cancel" value="Cancel">
+
+  </div>
+
+  <script>
+    function remove(elem) {
+      elem.parentNode.removeChild(elem);
+    }
+
+    function btnClick() {
+      if (!validData())
+        return false;
+    }
+
+    function removeAll() {
+      document.getElementById("checkList").innerHTML = "";
+    }
+  </script>
+
+</body>
+
 </html>
